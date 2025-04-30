@@ -11,6 +11,7 @@ const Layout = ({ children, title = "Finance App" }) => {
         <meta charSet="utf-8" />
         <title>{title}</title>
       </Helmet>
+      
       <Header />
       <main className="min-h-screen">
         <Toaster />
