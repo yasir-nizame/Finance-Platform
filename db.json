@@ -1,0 +1,60 @@
+{
+  "transactions": [
+    {
+      "id": "1",
+      "type": "income",
+      "amount": 1000,
+      "category": "Salary",
+      "date": "2025-05-01",
+      "description": "Monthly salary"
+    },
+    {
+      "id": "2",
+      "type": "expense",
+      "amount": 200,
+      "category": "Groceries",
+      "date": "2025-05-02",
+      "description": "Weekly groceries"
+    },
+    {
+      "id": "3",
+      "type": "income",
+      "amount": 500,
+      "category": "Freelance",
+      "date": "2025-05-03",
+      "description": "Payment for project"
+    },
+    {
+      "id": "4",
+      "type": "expense",
+      "amount": 150,
+      "category": "Utilities",
+      "date": "2025-05-04",
+      "description": "Electricity bill"
+    },
+    {
+      "id": "5",
+      "type": "expense",
+      "amount": 300,
+      "category": "Rent",
+      "date": "2025-05-05",
+      "description": "Monthly apartment rent"
+    },
+    {
+      "id": "6",
+      "type": "income",
+      "amount": 200,
+      "category": "Investment",
+      "date": "2025-05-06",
+      "description": "Dividend payout"
+    },
+    {
+      "id": "6e24",
+      "type": "expense",
+      "amount": "2500",
+      "category": "Entertainment",
+      "date": "2025-05-10",
+      "description": "Paid Netflix Subscription fee"
+    }
+  ]
+}

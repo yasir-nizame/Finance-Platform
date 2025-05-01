@@ -15,12 +15,6 @@ export const loginWithOtp = async ({ email, token }) => {
   return await supabase.auth.verifyOtp({ email, token });
 };
 
-export const resetPassword = async (email) => {
-  return await supabase.auth.resetPasswordForEmail(email, {
-    redirectTo: "http://localhost:5173/update-password",
-  });
-};
-
 export const updatePassword = async (newPassword) => {
   return await supabase.auth.updateUser({ password: newPassword });
 };
@@ -34,6 +28,15 @@ export const logout = async () => {
 };
 
 export const getCurrentUser = async () => {
-  const { data } = await supabase.auth.getUser();
-  return data.user;
+  return await supabase.auth.getUser();
 };
+
+export const updateUser = async ({ password }) => {
+  return await supabase.auth.updateUser({ password });
+};
+// export const resetPassword = async (email) => {
+//   return await supabase.auth.resetPasswordForEmail(email, {
+//     redirectTo: "http://localhost:5173/update-password",
+//   });
+// };
+

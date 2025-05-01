@@ -1,43 +1,58 @@
-// AuthContext.js
 import { createContext, useContext, useEffect, useState } from "react";
 import supabase from "../services/supabase";
+
 const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
   const [auth, setAuth] = useState({
     user: null,
+    loading: true,
     token: "",
   });
 
   useEffect(() => {
-    const access_token = sessionStorage.getItem("access_token");
-    const refresh_token = sessionStorage.getItem("refresh_token");
+    const initializeSession = async () => {
+      const access_token = sessionStorage.getItem("access_token");
+      const refresh_token = sessionStorage.getItem("refresh_token");
 
-    if (access_token && refresh_token) {
-      supabase.auth
-        .setSession({ access_token, refresh_token })
-        .then(({ data }) => {
+      if (access_token && refresh_token) {
+        const { data, error } = await supabase.auth.setSession({
+          access_token,
+          refresh_token,
+        });
+        if (error) {
+          console.error("Error restoring session:", error);
+          sessionStorage.clear();
+          setAuth({ user: null, token: "", loading: false });
+        } else {
           setAuth({
             user: data.user ?? null,
-            token: data.session.access_token ?? "",
+            token: data.session?.access_token ?? "",
+            loading: false,
           });
-        });
-    }
+        }
+      } else {
+        setAuth({ user: null, token: "", loading: false });
+      }
+    };
 
-    // Listen to auth changes
+    initializeSession();
+
     const { data: listener } = supabase.auth.onAuthStateChange(
       (event, session) => {
-        if (session?.access_token) {
+        console.log("Auth event:", event, session);
+        if (event === "SIGNED_IN" && session) {
           sessionStorage.setItem("access_token", session.access_token);
           sessionStorage.setItem("refresh_token", session.refresh_token);
           sessionStorage.setItem("user", JSON.stringify(session.user));
           setAuth({
             user: session.user,
             token: session.access_token,
+            loading: false,
           });
-        } else {
+        } else if (event === "SIGNED_OUT" || !session) {
           sessionStorage.clear();
-          setAuth({ user: null, token: "" });
+          setAuth({ user: null, token: "", loading: false });
         }
       }
     );
