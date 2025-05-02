@@ -1,20 +1,25 @@
 {
   "transactions": [
     {
-      "id": "1",
       "type": "income",
-      "amount": 1000,
+      "amount": "100000",
       "category": "Salary",
       "date": "2025-05-01",
-      "description": "Monthly salary"
+      "description": "Monthly salary",
+      "id": "1",
+      "details": {
+        "bank": "Bank of America",
+        "account_number": "123456789",
+        "transaction_id": "TXN123456"
+      }
     },
     {
-      "id": "2",
       "type": "expense",
-      "amount": 200,
+      "amount": "500",
       "category": "Groceries",
-      "date": "2025-05-02",
-      "description": "Weekly groceries"
+      "date": "2025-05-03",
+      "description": "Monthly groceries",
+      "id": "2"
     },
     {
       "id": "3",
@@ -33,14 +38,6 @@
       "description": "Electricity bill"
     },
     {
-      "id": "5",
-      "type": "expense",
-      "amount": 300,
-      "category": "Rent",
-      "date": "2025-05-05",
-      "description": "Monthly apartment rent"
-    },
-    {
       "id": "6",
       "type": "income",
       "amount": 200,
@@ -49,12 +46,36 @@
       "description": "Dividend payout"
     },
     {
-      "id": "6e24",
+      "id": "3d77",
+      "type": "income",
+      "amount": "30000",
+      "category": "House Rent",
+      "date": "2025-05-01",
+      "description": "House no B-105 Rent received"
+    },
+    {
       "type": "expense",
-      "amount": "2500",
-      "category": "Entertainment",
-      "date": "2025-05-10",
-      "description": "Paid Netflix Subscription fee"
+      "amount": "3000",
+      "category": "Shopping",
+      "date": "2025-03-05",
+      "description": "Eid Shopping",
+      "id": "8b97"
+    },
+    {
+      "id": "0bdb",
+      "type": "income",
+      "amount": "10000",
+      "category": "Shop Rent",
+      "date": "15-05-2025",
+      "description": "Rent from ABC mall shop"
+    },
+    {
+      "id": "29ad",
+      "type": "income",
+      "amount": "342",
+      "category": "Groceries",
+      "date": "30-05-2025",
+      "description": "sgsjgsj"
     }
   ]
 }

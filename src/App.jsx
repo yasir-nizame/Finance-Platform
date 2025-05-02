@@ -12,19 +12,24 @@ import DeleteTransaction from "./pages/dashboard/DeleteTransaction";
 import UpdateTransaction from "./pages/dashboard/UpdateTransaction";
 import AddTransaction from "./pages/dashboard/AddTransaction";
 
-
 function App() {
   return (
     <>
       <BrowserRouter>
         <Routes>
           <Route element={<ProtectedRoute />}>
-            <Route path="/" element={<Home />} />
-            <Route path="/dashboard" element={<DashboardLayout />} />
-            <Route path="/create-transaction" element={<AddTransaction />} />
-            <Route path="/edit-transaction" element={<UpdateTransaction />} />
-            <Route path="/delete-transaction" element={<DeleteTransaction />} />
+            <Route path="/dashboard" element={<DashboardLayout />}>
+              <Route path="create-transaction" element={<AddTransaction />} />
+              <Route path="edit-transaction" element={<UpdateTransaction />} />
+
+              {/* <Route path="/edit-transaction" element={<UpdateTransaction />} /> */}
+              <Route
+                path="delete-transaction"
+                element={<DeleteTransaction />}
+              />
+            </Route>
             <Route path="/all-transactions" element={<TransactionList />} />
+            <Route path="/" element={<Home />} />
           </Route>
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />

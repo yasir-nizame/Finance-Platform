@@ -3,56 +3,77 @@ import {
   PlusCircleOutlined,
   EditOutlined,
   DeleteOutlined,
+  HomeOutlined,
 } from "@ant-design/icons";
 import { Link, useLocation } from "react-router-dom";
+import Footer from "../../components/Footer";
+import { Outlet } from "react-router-dom";
+import Header from "../../components/Header";
+// Header,
+const { Sider, Content } = Layout;
 
-const { Header, Sider, Content } = Layout;
-
-const DashboardLayout = ({ children }) => {
+const DashboardLayout = () => {
   const location = useLocation();
 
   const menuItems = [
     {
       key: "/",
+      icon: <HomeOutlined />,
+      label: <Link to="/">Home</Link>,
+    },
+    {
+      key: "/dashboard/create-transaction",
       icon: <PlusCircleOutlined />,
-      label: <Link to="/create-transaction">Create Transaction</Link>,
+      label: <Link to="/dashboard/create-transaction">Create Transaction</Link>,
     },
     {
-      key: "/edit",
+      key: "/dashboard/edit-transaction",
       icon: <EditOutlined />,
-      label: <Link to="/edit-transaction">Edit Transaction</Link>,
+      label: <Link to="/dashboard/edit-transaction">Edit Transaction</Link>,
     },
     {
-      key: "/delete",
+      key: "/dashboard/delete-transaction",
       icon: <DeleteOutlined />,
-      label: <Link to="/delete-transaction">Delete Transaction</Link>,
+      label: <Link to="/dashboard/delete-transaction">Delete Transaction</Link>,
     },
   ];
 
-  return (
-    <Layout className="min-h-screen">
-      <Sider className="bg-gray-900">
-        <div className="text-white text-xl font-bold py-4 text-center border-b border-gray-700">
-          💰 FinanceDash
-        </div>
-        <Menu
-          theme="dark"
-          mode="inline"
-          selectedKeys={[location.pathname]}
-          items={menuItems}
-          className="bg-gray-900"
-        />
-      </Sider>
+  const isDashboardRoot = location.pathname === "/dashboard";
 
-      <Layout>
-        <Header className="bg-white shadow-md px-6">
-          <h1 className="text-2xl font-semibold">
-            Finance Transaction Manager
-          </h1>
-        </Header>
-        <Content className="p-6 bg-gray-50">{children}</Content>
+  return (
+    <>
+      <Header />
+      <Layout className="min-h-screen">
+        <Sider className="bg-gray-900">
+          <Menu
+            theme="dark"
+            mode="inline"
+            selectedKeys={[location.pathname]}
+            items={menuItems}
+            className="bg-gray-900"
+          />
+        </Sider>
+
+        <Layout>
+          <Content className="min-h-screen bg-gray-50">
+            {isDashboardRoot ? (
+              <div className="flex justify-center items-center h-full">
+                <img
+                  src="/bg_dashboard.jpg"
+                  alt="Dashboard Background"
+                  className="rounded-xl shadow-lg "
+                />
+              </div>
+            ) : (
+              <div className="bg-white p-6 rounded-lg shadow-lg">
+                <Outlet />
+              </div>
+            )}
+          </Content>
+        </Layout>
       </Layout>
-    </Layout>
+      <Footer />
+    </>
   );
 };
 

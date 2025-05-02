@@ -6,7 +6,7 @@ import { Link } from "react-router";
 
 const Header = () => {
   const [auth, setAuth] = useAuth();
-  console.log("auth.user", auth.user);
+  const isDashboardRoot = location.pathname === "/dashboard";
 
   const handleLogout = async () => {
     try {
@@ -24,18 +24,22 @@ const Header = () => {
 
   if (auth.loading) return null;
   return (
-    <div className="flex flex-row justify-between items-center bg-blue-200 overflow-x-hidden p-3">
-      <div>Header</div>
+    <div className="flex flex-row justify-between items-center bg-gray-900 overflow-x-hidden p-3">
+      <div className="text-white text-xl font-bold text-center border-b border-gray-700">
+        💰 FinanceDash
+      </div>
       {auth?.user && (
         <div>
           <Button onClick={handleLogout} type="primary">
             Log Out
           </Button>
-          <Link to="/dashboard">
-            <Button type="primary" className="ml-2">
-              Dashboard
-            </Button>
-          </Link>
+          {!isDashboardRoot && (
+            <Link to="/dashboard">
+              <Button type="primary" className="ml-2">
+                Dashboard
+              </Button>
+            </Link>
+          )}
         </div>
       )}
     </div>
