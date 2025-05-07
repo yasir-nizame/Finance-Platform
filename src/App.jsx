@@ -21,14 +21,12 @@ function App() {
             <Route path="/dashboard" element={<DashboardLayout />}>
               <Route path="create-transaction" element={<AddTransaction />} />
               <Route path="edit-transaction" element={<UpdateTransaction />} />
-
-              {/* <Route path="/edit-transaction" element={<UpdateTransaction />} /> */}
+              <Route path="all-transactions" element={<TransactionList />} />
               <Route
                 path="delete-transaction"
                 element={<DeleteTransaction />}
               />
             </Route>
-            <Route path="/all-transactions" element={<TransactionList />} />
             <Route path="/" element={<Home />} />
           </Route>
           <Route path="/login" element={<Login />} />

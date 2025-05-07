@@ -21,6 +21,7 @@ const AddTransaction = () => {
 
   const onFinish = (values) => {
     mutation.mutate({
+      id: crypto.randomUUID(),
       ...values,
       date: values.date.format("DD-MM-YYYY"),
     });

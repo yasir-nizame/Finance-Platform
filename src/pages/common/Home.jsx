@@ -4,6 +4,8 @@ import { Card, Spin, Alert, Tag } from "antd";
 import Layout from "../../components/Layout";
 import { ArrowDownOutlined, ArrowUpOutlined } from "@ant-design/icons";
 import { useParams } from "react-router";
+import { useAuth } from "../../services/authContext";
+import toast from "react-hot-toast";
 
 const fetchTransactions = async () => {
   const { data } = await axios.get("http://localhost:3001/transactions");
@@ -11,7 +13,11 @@ const fetchTransactions = async () => {
 };
 
 const Home = () => {
-  const {id} =useParams()
+  const [auth] = useAuth();
+  // console.log("authh", auth);
+  const { id } = useParams();
+  const username =
+    auth?.user?.username || auth?.user?.user_metadata?.full_name || "User";
   const { data, isLoading, isError } = useQuery({
     queryKey: ["transactions"],
     queryFn: fetchTransactions,
@@ -21,6 +27,9 @@ const Home = () => {
   return (
     <Layout title="Finance App - Home">
       <div className="p-6 min-h-screen bg-gray-50">
+        <div className="font-bold text-2xl mb-4 text-center">
+          <h1>Welcome! {username}</h1>
+        </div>
         <h1 className="text-3xl font-bold text-gray-800 mb-8">
           All Transactions
         </h1>

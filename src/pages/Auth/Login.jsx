@@ -5,6 +5,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../../services/authContext";
 import Layout from "../../components/Layout";
 import { GoogleOutlined } from "@ant-design/icons";
+import toast from "react-hot-toast";
 
 const { Title, Text } = Typography;
 
@@ -30,8 +31,9 @@ const Login = () => {
     }
 
     if (error) {
-      setMessage("Error logging in user");
-      console.log(error);
+      setMessage("Error logging in user", error);
+      toast.error("Please Login through Google!");
+      // console.log(error);
     }
   };
 
@@ -80,11 +82,11 @@ const Login = () => {
               <Input.Password placeholder="Enter your password" />
             </Form.Item>
 
-            {message && (
+            {/* {message && (
               <Text type="danger" className="block mt-2">
                 {message}
               </Text>
-            )}
+            )} */}
 
             <Form.Item className="mt-4">
               <Button type="primary" htmlType="submit" block>

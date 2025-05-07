@@ -11,17 +11,23 @@ const Register = () => {
   const [loading, setLoading] = useState(false);
 
   const handleEmailRegister = async (values) => {
-    const { email, password } = values;
+    console.log("vals", values);
+    const { email, password, username } = values;
     setLoading(true);
     const { data, error } = await supabase.auth.signUp({
       email,
       password,
+      options: {
+        data: { username },
+      },
     });
 
     if (error) {
       antdMessage.error(error.message);
+      console.log(error);
     } else {
       antdMessage.success("User registered successfully. Check your email.");
+      console.log("data", data);
       navigate("/login");
     }
     setLoading(false);
@@ -44,6 +50,15 @@ const Register = () => {
           </h1>
 
           <Form layout="vertical" onFinish={handleEmailRegister}>
+            <Form.Item
+              label="Username"
+              name="username"
+              rules={[
+                { required: true, message: "Please enter your username!" },
+              ]}
+            >
+              <Input />
+            </Form.Item>
             <Form.Item
               label="Email"
               name="email"
@@ -68,8 +83,9 @@ const Register = () => {
                 htmlType="submit"
                 className="w-full  flex items-center justify-center"
                 loading={loading}
+                disabled={loading}
               >
-                Register
+                {loading ? "Registering..." : "Register"}
               </Button>
             </Form.Item>
           </Form>
@@ -83,7 +99,10 @@ const Register = () => {
           >
             Continue with Google
           </Button>
-          <Link to="/login" className="text-blue-600 hover:underline mt-3 justify-center flex">
+          <Link
+            to="/login"
+            className="text-blue-600 hover:underline mt-3 justify-center flex"
+          >
             {" "}
             Already have an account? Log in
           </Link>

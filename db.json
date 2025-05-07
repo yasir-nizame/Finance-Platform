@@ -68,14 +68,6 @@
       "category": "Shop Rent",
       "date": "15-05-2025",
       "description": "Rent from ABC mall shop"
-    },
-    {
-      "id": "29ad",
-      "type": "income",
-      "amount": "342",
-      "category": "Groceries",
-      "date": "30-05-2025",
-      "description": "sgsjgsj"
     }
   ]
 }

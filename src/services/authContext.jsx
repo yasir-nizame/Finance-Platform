@@ -26,7 +26,11 @@ export const AuthProvider = ({ children }) => {
           setAuth({ user: null, token: "", loading: false });
         } else {
           setAuth({
-            user: data.user ?? null,
+            user: {
+              ...(data.user ?? null),
+              username: data.user.user_metadata?.username || "",
+            },
+            // user: data.user ?? null,
             token: data.session?.access_token ?? "",
             loading: false,
           });
@@ -40,13 +44,17 @@ export const AuthProvider = ({ children }) => {
 
     const { data: listener } = supabase.auth.onAuthStateChange(
       (event, session) => {
-        console.log("Auth event:", event, session);
+        // console.log("Auth event:", event, session);
         if (event === "SIGNED_IN" && session) {
           sessionStorage.setItem("access_token", session.access_token);
           sessionStorage.setItem("refresh_token", session.refresh_token);
           sessionStorage.setItem("user", JSON.stringify(session.user));
           setAuth({
-            user: session.user,
+            // user: session.user,
+            user: {
+              ...session.user,
+              username: session.user.user_metadata?.username || "",
+            },
             token: session.access_token,
             loading: false,
           });

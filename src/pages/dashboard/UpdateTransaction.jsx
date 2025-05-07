@@ -147,7 +147,7 @@ const UpdateTransaction = () => {
                 <Button
                   type="primary"
                   htmlType="submit"
-                  className="bg-blue-600 hover:bg-blue-700 w-1/4"
+                  className="bg-blue-600 hover:bg-blue-700 w-1/4 p-3"
                   disabled={!selectedId}
                 >
                   Update Transaction

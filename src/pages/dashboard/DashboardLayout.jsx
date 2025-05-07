@@ -1,8 +1,5 @@
 import { Layout, Menu } from "antd";
 import {
-  PlusCircleOutlined,
-  EditOutlined,
-  DeleteOutlined,
   HomeOutlined,
 } from "@ant-design/icons";
 import { Link, useLocation } from "react-router-dom";
@@ -17,25 +14,30 @@ const DashboardLayout = () => {
 
   const menuItems = [
     {
-      key: "/",
+      key: "/dashbaord/all-transactions",
+      icon: <HomeOutlined />,
+      label: <Link to="/dashboard/all-transactions">All Transactions</Link>,
+    },
+    {
+      key: "/all-transactions",
       icon: <HomeOutlined />,
       label: <Link to="/">Home</Link>,
     },
-    {
-      key: "/dashboard/create-transaction",
-      icon: <PlusCircleOutlined />,
-      label: <Link to="/dashboard/create-transaction">Create Transaction</Link>,
-    },
-    {
-      key: "/dashboard/edit-transaction",
-      icon: <EditOutlined />,
-      label: <Link to="/dashboard/edit-transaction">Edit Transaction</Link>,
-    },
-    {
-      key: "/dashboard/delete-transaction",
-      icon: <DeleteOutlined />,
-      label: <Link to="/dashboard/delete-transaction">Delete Transaction</Link>,
-    },
+    // {
+    //   key: "/dashboard/create-transaction",
+    //   icon: <PlusCircleOutlined />,
+    //   label: <Link to="/dashboard/create-transaction">Create Transaction</Link>,
+    // },
+    // {
+    //   key: "/dashboard/edit-transaction",
+    //   icon: <EditOutlined />,
+    //   label: <Link to="/dashboard/edit-transaction">Edit Transaction</Link>,
+    // },
+    // {
+    //   key: "/dashboard/delete-transaction",
+    //   icon: <DeleteOutlined />,
+    //   label: <Link to="/dashboard/delete-transaction">Delete Transaction</Link>,
+    // },
   ];
 
   const isDashboardRoot = location.pathname === "/dashboard";
