@@ -3,6 +3,7 @@ import { Form, Input, Button, Select, DatePicker, Card } from "antd";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import SPButton from "../../components/atoms/sp-button";
 
 const { Option } = Select;
 
@@ -15,7 +16,7 @@ const AddTransaction = () => {
       axios.post("http://localhost:3001/transactions", newTransaction),
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["transactions"] });
-      navigate("/");
+      navigate("/dashboard/all-transactions");
     },
   });
 
@@ -74,13 +75,13 @@ const AddTransaction = () => {
           </Form.Item>
 
           <Form.Item>
-            <Button
+            <SPButton
               type="primary"
               htmlType="submit"
               className="bg-blue-600 hover:bg-blue-700 w-1/4 h-10 text-base font-medium"
             >
               Add Transaction
-            </Button>
+            </SPButton>
           </Form.Item>
         </Form>
       </Card>

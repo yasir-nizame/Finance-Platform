@@ -5,6 +5,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { login, loginWithGoogle } from "../../helpers/authHelper";
 import supabase from "../../services/supabase";
 import Layout from "../../components/Layout";
+import SPButton from "../../components/atoms/sp-button";
 
 const Register = () => {
   const navigate = useNavigate();
@@ -78,7 +79,7 @@ const Register = () => {
             </Form.Item>
 
             <Form.Item>
-              <Button
+              <SPButton
                 type="primary"
                 htmlType="submit"
                 className="w-full  flex items-center justify-center"
@@ -86,19 +87,19 @@ const Register = () => {
                 disabled={loading}
               >
                 {loading ? "Registering..." : "Register"}
-              </Button>
+              </SPButton>
             </Form.Item>
           </Form>
 
           <Divider plain>Or</Divider>
 
-          <Button
+          <SPButton
             icon={<GoogleOutlined />}
             className="w-full flex items-center justify-center border border-gray-300 mb-3"
             onClick={handleGoogleSSO}
           >
             Continue with Google
-          </Button>
+          </SPButton>
           <Link
             to="/login"
             className="text-blue-600 hover:underline mt-3 justify-center flex"

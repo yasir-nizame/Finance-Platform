@@ -3,6 +3,7 @@ import { Button } from "antd";
 import { useAuth } from "../services/authContext";
 import supabase from "../services/supabase";
 import { Link } from "react-router";
+import SPButton from "./atoms/sp-button";
 
 const Header = () => {
   const [auth, setAuth] = useAuth();
@@ -30,15 +31,14 @@ const Header = () => {
       </div>
       {auth?.user && (
         <div>
-          <Button onClick={handleLogout} type="primary">
-            Log Out
-          </Button>
+          <SPButton onClick={handleLogout} type="primary">
+            Logout
+          </SPButton>
+
           {!isDashboardRoot && (
-            <Link to="/dashboard">
-              <Button type="primary" className="ml-2">
-                Dashboard
-              </Button>
-            </Link>
+            <SPButton type="default" className=" ml-2">
+              <Link to="/dashboard">Dashboard</Link>
+            </SPButton>
           )}
         </div>
       )}

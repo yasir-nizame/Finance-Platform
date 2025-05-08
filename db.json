@@ -15,7 +15,7 @@
     },
     {
       "type": "expense",
-      "amount": "500",
+      "amount": "700",
       "category": "Groceries",
       "date": "2025-05-03",
       "description": "Monthly groceries",
@@ -38,20 +38,12 @@
       "description": "Electricity bill"
     },
     {
-      "id": "6",
       "type": "income",
-      "amount": 200,
+      "amount": "1999",
       "category": "Investment",
       "date": "2025-05-06",
-      "description": "Dividend payout"
-    },
-    {
-      "id": "3d77",
-      "type": "income",
-      "amount": "30000",
-      "category": "House Rent",
-      "date": "2025-05-01",
-      "description": "House no B-105 Rent received"
+      "description": "Dividend payout",
+      "id": "6"
     },
     {
       "type": "expense",
@@ -68,6 +60,30 @@
       "category": "Shop Rent",
       "date": "15-05-2025",
       "description": "Rent from ABC mall shop"
+    },
+    {
+      "id": "e1c94900-5874-49e4-b9ee-902e49ca8a4e",
+      "type": "expense",
+      "amount": "2000",
+      "category": "Entertainment",
+      "date": "08-05-2025",
+      "description": "Dinner bill"
+    },
+    {
+      "id": "c4ea7e01-5177-4b60-84f2-525fbdc1f743",
+      "type": "expense",
+      "amount": "900",
+      "category": "Salary",
+      "date": "14-05-2025",
+      "description": "Clothes"
+    },
+    {
+      "id": "672cb66f-6613-4543-929e-d13952f40d63",
+      "type": "income",
+      "amount": "5000",
+      "category": "Shop Rent",
+      "date": "22-05-2025",
+      "description": "ABC mall shop rent received"
     }
   ]
 }

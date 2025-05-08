@@ -31,14 +31,14 @@ const UpdatePassword = () => {
             <Input.Password />
           </Form.Item>
           <Form.Item>
-            <Button
+            <SPButton
               type="primary"
               htmlType="submit"
               loading={loading}
               className="w-full"
             >
               Update Password
-            </Button>
+            </SPButton>
           </Form.Item>
         </Form>
       </div>

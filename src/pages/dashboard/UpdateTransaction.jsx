@@ -13,6 +13,7 @@ import {
   DatePicker,
 } from "antd";
 import dayjs from "dayjs";
+import SPButton from "../../components/atoms/sp-button";
 
 const { Option } = Select;
 
@@ -38,7 +39,7 @@ const UpdateTransaction = () => {
     onSuccess: () => {
       message.success("Transaction updated successfully!");
       queryClient.invalidateQueries({ queryKey: ["transactions"] });
-      navigate("/");
+      navigate("/dashboard/all-transactions");
     },
   });
 
@@ -144,14 +145,14 @@ const UpdateTransaction = () => {
               </Form.Item>
 
               <Form.Item>
-                <Button
+                <SPButton
                   type="primary"
                   htmlType="submit"
                   className="bg-blue-600 hover:bg-blue-700 w-1/4 p-3"
                   disabled={!selectedId}
                 >
                   Update Transaction
-                </Button>
+                </SPButton>
               </Form.Item>
             </Form>
           </>

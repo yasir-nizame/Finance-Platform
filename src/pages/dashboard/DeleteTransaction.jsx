@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import axios from "axios";
 import { Button, Card, Checkbox, message, Spin } from "antd";
+import SPButton from "../../components/atoms/sp-button";
 
 const fetchTransactions = async () => {
   const { data } = await axios.get("http://localhost:3001/transactions");
@@ -30,7 +31,7 @@ const DeleteTransaction = () => {
     onSuccess: () => {
       message.success("Selected transactions deleted!");
       queryClient.invalidateQueries(["transactions"]);
-      navigate("/");
+      navigate("/dashboard/all-transactions");
     },
   });
 
@@ -101,14 +102,14 @@ const DeleteTransaction = () => {
                     </li>
                   ))}
               </ul>
-              <Button
+              <SPButton
                 danger
                 type="primary"
                 className="w-full bg-red-600 hover:bg-red-700"
                 onClick={() => deleteMutation.mutate()}
               >
                 Delete
-              </Button>
+              </SPButton>
             </Card>
           </div>
         )}

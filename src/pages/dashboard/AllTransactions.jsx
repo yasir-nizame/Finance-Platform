@@ -184,6 +184,7 @@ import { useAuth } from "../../services/authContext";
 import AddTransaction from "./AddTransaction";
 import UpdateTransaction from "./UpdateTransaction";
 import DeleteTransaction from "./DeleteTransaction";
+import SPButton from "../../components/atoms/sp-button";
 
 const fetchTransactions = async () => {
   const { data } = await axios.get("http://localhost:3001/transactions");
@@ -206,6 +207,10 @@ const AllTransactions = () => {
     edit: false,
     delete: false,
   });
+  const [pagination, setPagination] = useState({
+    current: 1,
+    pageSize: 8,
+  });
 
   const openModal = (type) => {
     setModalVisible({ ...modalVisible, [type]: true });
@@ -220,11 +225,13 @@ const AllTransactions = () => {
     {
       title: "S.No",
       key: "sno",
-      render: (_, __, index) => (
-        <span className="font-semibold">{index + 1}</span>
-      ),
+      render: (_, __, index) => {
+        const serialNumber =
+          (pagination.current - 1) * pagination.pageSize + index + 1;
+        return <span className="font-semibold">{serialNumber}</span>;
+      },
     },
-    
+
     {
       title: "Category",
       dataIndex: "category",
@@ -277,28 +284,28 @@ const AllTransactions = () => {
         All Transactions
       </h1>
       <div className="flex items-end justify-end gap-3 m-4">
-        <Button
+        <SPButton
           type="primary"
           icon={<PlusOutlined />}
           onClick={() => openModal("add")}
         >
           Add
-        </Button>
-        <Button
+        </SPButton>
+        <SPButton
           type="default"
           icon={<EditOutlined />}
           onClick={() => openModal("edit")}
         >
           Edit
-        </Button>
-        <Button
+        </SPButton>
+        <SPButton
           type="default"
           danger
           icon={<DeleteOutlined />}
           onClick={() => openModal("delete")}
         >
           Delete
-        </Button>
+        </SPButton>
       </div>
       {isLoading && (
         <div className="flex justify-center">
@@ -320,7 +327,12 @@ const AllTransactions = () => {
           dataSource={data}
           rowKey="id"
           className="shadow-lg rounded-lg"
-          pagination={{ pageSize: 5 }}
+          pagination={{
+            current: pagination.current,
+            pageSize: pagination.pageSize,
+            onChange: (page, pageSize) =>
+              setPagination({ current: page, pageSize }),
+          }}
         />
       )}
 

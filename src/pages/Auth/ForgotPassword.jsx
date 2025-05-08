@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Button, Form, Input, message } from "antd";
+import SPButton from "../../components/atoms/sp-button";
 // import { resetPassword } from "../../helpers/authHelper.js";
 
 const ForgotPassword = () => {
@@ -42,14 +43,14 @@ const ForgotPassword = () => {
             <Input />
           </Form.Item>
           <Form.Item>
-            <Button
+            <SPButton
               type="primary"
               htmlType="submit"
               loading={loading}
               className="w-full"
             >
               Send Reset Link
-            </Button>
+            </SPButton>
           </Form.Item>
         </Form>
       </div>

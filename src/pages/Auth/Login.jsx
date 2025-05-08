@@ -6,6 +6,7 @@ import { useAuth } from "../../services/authContext";
 import Layout from "../../components/Layout";
 import { GoogleOutlined } from "@ant-design/icons";
 import toast from "react-hot-toast";
+import SPButton from "../../components/atoms/sp-button";
 
 const { Title, Text } = Typography;
 
@@ -89,17 +90,17 @@ const Login = () => {
             )} */}
 
             <Form.Item className="mt-4">
-              <Button type="primary" htmlType="submit" block>
+              <SPButton type="primary" htmlType="submit" block>
                 Log In
-              </Button>
+              </SPButton>
             </Form.Item>
-            <Button
+            <SPButton
               icon={<GoogleOutlined />}
               className="w-full flex items-center justify-center border border-gray-300"
               onClick={handleGoogleSSO}
             >
               Continue with Google
-            </Button>
+            </SPButton>
           </Form>
 
           <div className="flex justify-between mt-4">
